@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE-edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Document</title>
+        </head>
+        <body>
+            <script>
+
+                //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
+                //element stocké dans une constante pour garantir l'integrité de l'element
+                const box = document.createElement("div")
+
+                //modification de sa propriété classList pour lui ajouter la classe .box
+                //avec le methode .add() de classList
+                box.classList.add("box")
+                
+                //methode pour ajouter à l'interieur de l'élément un noeud de texte
+                box.innerText = "Texte"
+
+                //méthode qui place un élément du DOM à la fin du contenu de l'élément visé
+                document.body.appendChild(box)
+
+                var elem, style
+
+                //methode pour selectioner l'element instancié sur la page
+                elem = document.querySelector('.box')
+
+                //methode pour prendre les propriétes CSS de un element HTML
+                style = getComputedStyle(elem)
+
+                //affichage de les propriétes de la box
+                alert("Class: " + box.className + 
+                      "\n- Background color : " + style.backgroundColor +
+                      "\n- Color : " + style.color +
+                      "\n- Height : " + style.height +
+                      "\n- Width : " + style.width +
+                      "\n- Display : " + style.display +
+                      "\n- Font : " + style.fontFamily + " ("+style.fontSize+")")
+            </script>
+
+        </body>
+
+    </html>

@@ -1,0 +1,16 @@
+/*propriété de la box*/
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(114, 143, 11);
+    color: white;
+    font-size: 3em;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    line-height: 75px;
+    margin: 5px;
+    
+}
