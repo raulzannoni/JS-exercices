@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE-edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Document</title>
+        </head>
+        <body>
+            <script>
+
+                //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
+                //element stocké dans une constante pour garantir l'integrité de l'element
+                const box = document.createElement("div")
+
+                //modification de sa propriété classList pour lui ajouter la classe .box
+                //avec le methode .add() de classList
+                box.classList.add("box")
+
+                
+                for (let i = 1; i <= 4; i++)
+                    {
+                        //methode pour créer une copie de l'element box de la boite chaque fois
+                        const newbox = box.cloneNode()
+
+                        //numero ajouté dans chaque box
+                        newbox.innerText = i
+                        //méthode qui place un élément du DOM à la fin du contenu de l'élément visé
+                        document.body.appendChild(newbox)
+
+                        //methode pour ajouter un evenement à tout élément du DOM
+                        newbox.addEventListener("click", function(){
+                            //si la boite n'a pas ce token
+                            if(!newbox.classList.contains("box-click"))
+                                {
+                                    newbox.classList.add("box-click")       
+                                }
+                            //sinon le token est effacé
+                            else
+                                {
+                                    newbox.classList.remove("box-click")   
+                                }
+                        })
+
+                    }
+            </script>
+
+        </body>
+
+    </html>
