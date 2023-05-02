@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE-edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Document</title>
+        </head>
+        <body>
+            <div id="board"></div>
+            <p id="select"></p>
+            <script>
+
+                //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
+                //element stocké dans une constante pour garantir l'integrité de l'element
+                const box = document.createElement("div")
+
+                const text = document.createElement("p")
+                //modification de sa propriété classList pour lui ajouter la classe .box
+                //avec le methode .add() de classList
+                box.classList.add("box")
+
+                const board = document.querySelector("#board")
+
+                const select = document.querySelector("#select")
+
+                var turn_O = true
+
+                var nb = 0
+
+                text.innerText = "It's O Turn!"
+                select.appendChild(text)
+
+                for (let i = 1; i <= 9; i++)
+                    {
+
+                        
+                        //methode pour créer une copie de l'element box de la boite chaque fois
+                        const newbox = box.cloneNode()
+
+                        //méthode qui place un élément du DOM à la fin du contenu de l'élément visé
+                        board.appendChild(newbox)
+
+                        //methode pour ajouter un evenement à tout élément du DOM
+                        newbox.addEventListener("click", function(){
+                            
+                                if(!newbox.classList.contains("box-O") && !newbox.classList.contains("box-X"))
+                                    {    
+                                    //
+                                    if(turn_O)
+                                        {
+                                            newbox.classList.add("box-O")
+                                            newbox.innerText = "O"
+                                            turn_O = false
+                                            text.innerText = "It's X Turn!"
+                                            select.appendChild(text)
+                                            nb++
+                                            if(nb == 9)
+                                                {
+                                                text.innerText = "Partie terminée!"
+                                                select.appendChild(text)
+                                                }      
+                                        }
+                                    //
+                                    else
+                                        {
+                                            newbox.classList.add("box-X")
+                                            newbox.innerText = "X"
+                                            turn_O = true    
+                                            text.innerText = "It's O Turn!"
+                                            select.appendChild(text)
+                                            nb++  
+                                            if(nb == 9)
+                                                {
+                                                text.innerText = "Partie terminée!"
+                                                select.appendChild(text)
+                                                }   
+                                        }
+                                    }
+                        })
+
+                    }
+            </script>
+            
+        </body>
+
+    </html>

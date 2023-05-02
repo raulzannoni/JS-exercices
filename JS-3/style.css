@@ -1,0 +1,50 @@
+#board{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 615px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(186, 196, 186);
+    color: white;
+    font-size: 3em;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    line-height: 75px;
+    margin: 2.5px;
+    /*animation: appear 1s;*/
+    cursor: pointer;
+    /*transition: background-color 0.5s, rotate 0.5s, transform 0.5s;*/
+}
+
+.box-O{
+
+    color: green;
+    
+}
+
+.box-X{
+
+    color: red;
+    
+}
+
+#select{
+    text-align: center;
+    font-size: xx-large;
+}
