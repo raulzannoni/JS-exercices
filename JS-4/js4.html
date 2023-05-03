@@ -9,11 +9,14 @@
         </head>
         <body>
             <div id="board"></div>
+            <p id="text"></p>
             <script>
 
                 //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
                 //element stocké dans une constante pour garantir l'integrité de l'element
                 const box = document.createElement("div")
+
+                const text = document.createElement("p")
 
                 //modification de sa propriété classList pour lui ajouter la classe .box
                 //avec le methode .add() de classList
@@ -26,44 +29,56 @@
                 //evenement = press key sur la clavier
                 //function = Box
                 document.addEventListener("keydown", Box)
-                
+
                 //fonctionne qui verifier les differents cles pressé 
                 function Box(e)
                     {
 
+                        //selection de tous les elements box
+                        const boxes = document.querySelectorAll(".box") 
+
                         let key = ''
-                        
-                        //si la clé pressé est arrow up
-                        if(e.key == 'ArrowUp')  
-                            {
-                            //creation dans le node de un nouvelle boite
-                            const newbox = box.cloneNode()
-                            
-                            //trois differentes numeros aleatoire
-                            var number_1 = Math.random() * 255
-                            var number_2 = Math.random() * 255
-                            var number_3 = Math.random() * 255 
-                            
-                            //ajoute de la proprieté background à chaque boite ajoutée
-                            newbox.style.background = 'rgb('+number_1+','+number_2+','+number_3+')'
-                            
-                            //ajoute de un nouvelle boite
-                            board.appendChild(newbox)
-                            }
-                        
-                        //si la clé pressé est arrow up
-                        else if(e.key == 'ArrowDown')  
-                            {  
-                            
-                            //selection de la derniere boite de le node
-                            const lastbox = board.lastChild   
-                        
-                            //effacement de la derniere boite
-                            board.removeChild(lastbox)
+
+                        //on va a ajouter un carré si le numero des les boites sont exactement un carré final de 15 x 15 carrés
+                        if(boxes.length < 225)
+                            {   
+                                //si la clé pressé est arrow up
+                                if(e.key == 'ArrowUp')  
+                                    {
+
+                                        //creation dans le node de un nouvelle boite
+                                        const newbox = box.cloneNode()
+                                        
+                                        //trois differentes numeros aleatoire
+                                        var number_1 = Math.random() * 255
+                                        var number_2 = Math.random() * 255
+                                        var number_3 = Math.random() * 255 
+                                        
+                                        //ajoute de la proprieté background à chaque boite ajoutée
+                                        newbox.style.background = 'rgb('+number_1+','+number_2+','+number_3+')'
+                                        
+                                        //ajoute de un nouvelle boite
+                                        board.appendChild(newbox)
+                                    }
+ 
+                                //si la clé pressé est arrow up
+                                else if(e.key == 'ArrowDown')  
+                                    {  
+                                    //selection de la derniere boite de le node
+                                    const lastbox = board.lastChild   
+
+                                    //effacement de la derniere boite
+                                    board.removeChild(lastbox)
+                                    }
                             }
                     }
+                /*
+                if(document.getElementsByClassName(".box").length == 10)
+                            {  
+                                document.getElementsByClassName(".box").classList.add(".box-pointer")
+                            }
+                            */
 
-                
                     
                     
             </script>
