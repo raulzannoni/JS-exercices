@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE-edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Document</title>
+        </head>
+        <body>
+            <div id="board"></div>
+            <script>
+
+                //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
+                //element stocké dans une constante pour garantir l'integrité de l'element
+                const box = document.createElement("div")
+
+                //modification de sa propriété classList pour lui ajouter la classe .box
+                //avec le methode .add() de classList
+                box.classList.add("box")
+
+                //methode pour selectioner le premier #board element
+                const board = document.querySelector("#board")
+
+                //methode pour ajouter un evenement à tout élément du DOM
+                //evenement = press key sur la clavier
+                //function = Box
+                document.addEventListener("keydown", Box)
+                
+                //fonctionne qui verifier les differents cles pressé 
+                function Box(e)
+                    {
+
+                        let key = ''
+                        
+                        //si la clé pressé est arrow up
+                        if(e.key == 'ArrowUp')  
+                            {
+                            //creation dans le node de un nouvelle boite
+                            const newbox = box.cloneNode()
+                            
+                            //trois differentes numeros aleatoire
+                            var number_1 = Math.random() * 255
+                            var number_2 = Math.random() * 255
+                            var number_3 = Math.random() * 255 
+                            
+                            //ajoute de la proprieté background à chaque boite ajoutée
+                            newbox.style.background = 'rgb('+number_1+','+number_2+','+number_3+')'
+                            
+                            //ajoute de un nouvelle boite
+                            board.appendChild(newbox)
+                            }
+                        
+                        //si la clé pressé est arrow up
+                        else if(e.key == 'ArrowDown')  
+                            {  
+                            
+                            //selection de la derniere boite de le node
+                            const lastbox = board.lastChild   
+                        
+                            //effacement de la derniere boite
+                            board.removeChild(lastbox)
+                            }
+                    }
+
+                
+                    
+                    
+            </script>
+
+        </body>
+
+    </html>

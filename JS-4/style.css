@@ -1,0 +1,24 @@
+#board{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    width: 600px;
+    height: 600px;
+    align-items: flex-start;
+    align-content: flex-start;
+
+}
+
+
+
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin: 0px;
+    animation: appear 1s;
+}
