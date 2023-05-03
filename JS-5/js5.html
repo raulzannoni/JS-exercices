@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE-edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Document</title>
+        </head>
+        <body>
+            <div class="box">
+                <p id="title">Valeur en euros</p>
+                <input type="text" id="input" placeholder="0 euros" onkeyup="Conversion()">
+                <p id="result" >0 francs</p>
+            </div>
+            <script>
+
+                //methode pour instancier un nouvel objet HTMLelement qvec balise "div" 
+                //element stocké dans une constante pour garantir l'integrité de l'element
+                const box = document.createElement("div")
+
+                //modification de sa propriété classList pour lui ajouter la classe .box
+                //avec le methode .add() de classList
+                box.classList.add("box")
+
+                //function qui convert le numero en francs apres que le numero est inseré dans l'input
+                function Conversion(){
+                    //valeur inseré dans l'input
+                    var euro = document.getElementById('input').value
+
+                    //verifier que la valeur soit numerique et positif
+                    if(isNaN(euro) || euro < 0)
+                    {
+                        document.getElementById("result").innerHTML = "Il faut ajouter une valeur numerique"
+                    }
+                    //conversion mise à jour
+                    else
+                    {
+                        document.getElementById("result").innerHTML = Math.round(euro * 655.957)/100 + " Francs"
+                    }
+                }
+                
+            </script>
+
+        </body
+
+</html>
