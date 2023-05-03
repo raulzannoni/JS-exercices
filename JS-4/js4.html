@@ -73,12 +73,13 @@
                             }
                     }
                 /*
-                if(document.getElementsByClassName(".box").length == 10)
-                            {  
-                                document.getElementsByClassName(".box").classList.add(".box-pointer")
-                            }
-                            */
-
+                if (document.querySelectorAll(".box").length > 5)
+                { 
+                board.querySelectorAll(".box").forEach(function(newbox)
+                {
+                    newbox.classList.add("box-pointer")
+                })             
+                }*/
                     
                     
             </script>
