@@ -4,6 +4,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE-edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <link rel="stylesheet" href="style.css">
             <title>Document</title>
         </head>
@@ -21,21 +22,37 @@
                 //avec le methode .add() de classList
                 box.classList.add("box")
 
+                //methode pour selectioner le premier #board element
                 const board = document.querySelector("#board")
 
+                //methode pour selectioner le premier #select element
                 const select = document.querySelector("#select")
 
-                var turn_O = true
+                //string de les fonts "O" et "X"
+                let oFont = '<i class="fa-regular fa-circle"></i>'
+                let xFont = '<i class="fa-solid fa-xmark"></i>'
 
+                //variable booleane pour le turn (true = O, false = X) 
+                var turn = Math.random() >= 0.5
+
+                //variable pour compter les turns
                 var nb = 0
-
-                text.innerText = "It's O Turn!"
-                select.appendChild(text)
-
+                
+                //affichage sur l'element select si c'est le turn pour O ou X
+                if(turn)
+                    {
+                        text.innerHTML = "It's "+ oFont + " turn!"
+                        select.appendChild(text)
+                    }
+                else
+                    {
+                        text.innerHTML = "It's "+ xFont + " turn!"
+                        select.appendChild(text)
+                    }
+                
+                //creation des boites et de ses proprietées
                 for (let i = 1; i <= 9; i++)
                     {
-
-                        
                         //methode pour créer une copie de l'element box de la boite chaque fois
                         const newbox = box.cloneNode()
 
@@ -45,39 +62,54 @@
                         //methode pour ajouter un evenement à tout élément du DOM
                         newbox.addEventListener("click", function(){
                             
-                                if(!newbox.classList.contains("box-O") && !newbox.classList.contains("box-X"))
-                                    {    
-                                    //
-                                    if(turn_O)
+                            //verifier si la boite a dejà un font
+                            if(!newbox.classList.contains("box-O") && !newbox.classList.contains("box-X"))
+                                {   
+                                    //si est le turn de O
+                                    if(turn)
                                         {
+                                            //ajoute de les informations de la boite O    
                                             newbox.classList.add("box-O")
-                                            newbox.innerText = "O"
-                                            turn_O = false
-                                            text.innerText = "It's X Turn!"
+                                            newbox.innerHTML = oFont
+
+                                            //changement de le turn et de le text select
+                                            turn = false
+                                            text.innerHTML = "It's "+ xFont + " turn!"
                                             select.appendChild(text)
+                                            
+                                            //turn suivante
                                             nb++
+                                            
+                                            //si le turn est le derniere = end
                                             if(nb == 9)
                                                 {
-                                                text.innerText = "Partie terminée!"
-                                                select.appendChild(text)
+                                                    text.innerText = "Partie terminée!"
+                                                    select.appendChild(text)
                                                 }      
                                         }
-                                    //
+                                    //si est le turn de X
                                     else
                                         {
+                                            //ajoute de les informations de la boite O     
                                             newbox.classList.add("box-X")
-                                            newbox.innerText = "X"
-                                            turn_O = true    
-                                            text.innerText = "It's O Turn!"
+                                            newbox.innerHTML = xFont
+
+                                            //changement de le turn et de le text select
+                                            turn = true    
+                                            text.innerHTML = "It's "+ oFont + " turn!"
                                             select.appendChild(text)
+
+                                            //turn suivante
                                             nb++  
+
+                                            //si le turn est le derniere = end
                                             if(nb == 9)
                                                 {
-                                                text.innerText = "Partie terminée!"
-                                                select.appendChild(text)
+                                                    text.innerText = "Partie terminée!"
+                                                    select.appendChild(text)
                                                 }   
                                         }
-                                    }
+                                }
                         })
 
                     }
