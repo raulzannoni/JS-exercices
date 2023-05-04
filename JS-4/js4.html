@@ -33,11 +33,12 @@
                 //fonctionne qui verifier les differents cles pressé 
                 function Box(e)
                     {
-
+                        let nb = 0
                         //selection de tous les elements box
                         const boxes = document.querySelectorAll(".box") 
 
                         let key = ''
+                        
 
                         //on va a ajouter un carré si le numero des les boites sont exactement un carré final de 15 x 15 carrés
                         if(boxes.length < 225)
@@ -45,7 +46,8 @@
                                 //si la clé pressé est arrow up
                                 if(e.key == 'ArrowUp')  
                                     {
-
+                                        
+                                        nb++
                                         //creation dans le node de un nouvelle boite
                                         const newbox = box.cloneNode()
                                         
@@ -59,31 +61,97 @@
                                         
                                         //ajoute de un nouvelle boite
                                         board.appendChild(newbox)
+
                                     }
  
                                 //si la clé pressé est arrow up
                                 else if(e.key == 'ArrowDown')  
-                                    {  
+                                    {
+                                        nb--
                                     //selection de la derniere boite de le node
                                     const lastbox = board.lastChild   
 
                                     //effacement de la derniere boite
                                     board.removeChild(lastbox)
                                     }
+                                
                             }
+
+                            //ajoute de "smile face"
+                            //si le carré est rempli 15x15
+                            if(boxes.length == 224)
+                            {
+
+                            for(let i = 0 ; i <=225; i++)
+                            {
+                                //condition pour changer la couleur dependant de la position de le carré
+                                let check = false
+
+                                //ligne 1
+                                if(i > 4 && i <10)
+                                    {check = true}
+                                //ligne 2    
+                                if(i > 17 && i <20 || i > 24 && i < 27)
+                                    {check = true}
+                                //ligne 3
+                                if(i == 32 || i == 42)
+                                    {check = true}
+                                //ligne 4
+                                if(i == 46 || i == 58)
+                                    {check = true}
+                                //ligne 5
+                                if(i == 61 || i == 73)
+                                    {check = true}
+                                //ligne 6 
+                                if(i > 74 && i < 90)
+                                    {check = true}
+                                //ligne 7
+                                if(i == 90 || i > 91 && i < 94 || i > 95 && i < 100 || i == 102 || i == 104)
+                                    {check = true}
+                                //ligne 8
+                                if(i == 105 || i > 106 && i < 110 || i == 111 || i > 112 && i < 116 || i == 117 || i == 119)
+                                    {check = true}
+                                //ligne 9
+                                if(i == 120 || i > 122 && i < 126 || i > 128 && i < 132 || i == 134 )
+                                {check = true}
+                                //ligne 10
+                                if(i == 135 || i == 149 )
+                                {check = true}
+                                //ligne 11
+                                if(i == 151 || i == 154 || i == 163 )
+                                {check = true}
+                                //ligne 12
+                                if(i == 166 || i > 169 && i < 174 || i == 178 )
+                                {check = true}
+                                //ligne 13
+                                if(i == 182 || i == 192 )
+                                {check = true}
+                                //ligne 14
+                                if(i > 197 && i < 200 || i > 204 && i < 207 )
+                                {check = true}
+                                //ligne 15
+                                if(i > 214 && i < 220 )
+                                {check = true}
+
+                                if(check)
+                                {
+                                // ajoute de le cursor pour le carré à colorer
+                                board.childNodes[i].style.cursor = "pointer" 
+                                
+                                //event aprés le click de les carrés selcetionés
+                                board.childNodes[i].addEventListener("click", function(){
+                                //remove de le background derniere
+                                board.childNodes[i].style.background = null
+                                //ajoute de le background noir
+                                board.childNodes[i].classList.add("box-pointer")
+                                //remotion de le cursor aprés le click
+                                board.childNodes[i].style.cursor = null     
+                                })
+                                }
+                            }
+                        }
                     }
-                /*
-                if (document.querySelectorAll(".box").length > 5)
-                { 
-                board.querySelectorAll(".box").forEach(function(newbox)
-                {
-                    newbox.classList.add("box-pointer")
-                })             
-                }*/
-                    
-                    
+
             </script>
-
         </body>
-
     </html>
